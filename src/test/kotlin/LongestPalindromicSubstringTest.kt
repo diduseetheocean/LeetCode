@@ -4,7 +4,13 @@ import org.junit.jupiter.api.Test
 internal class LongestPalindromicSubstringTest {
     @Test
     fun testLongestPalindromicSubstring() {
-        val palindrom = LongestPalindromicSubstring().solution("babad")
-        assertEquals("bab", palindrom)
+        val palindrome = LongestPalindromicSubstring().solution("babad")
+        assertEquals("bab", palindrome)
+    }
+
+    @Test
+    fun testLongestPalindromicSubstringDynamicSolution() {
+        val palindrome = LongestPalindromicSubstring().solutionDynamic("orgeeksskeegfor")
+        assertEquals("geeksskeeg", palindrome)
     }
 }
