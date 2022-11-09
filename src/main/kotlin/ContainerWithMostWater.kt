@@ -1,15 +1,14 @@
 class ContainerWithMostWater {
     fun solution(height: IntArray): Int {
-        var leftNum : Int
-        var rightNum : Int
+        var leftNum = 0
         var currentMaxSum = 0
 
         for((index, value) in height.withIndex()) {
-            leftNum = value
+            if(value > leftNum) leftNum = value else continue
             for(i in index + 1 until height.size) {
-                rightNum = height[i]
-                val newMaxSum = Math.min(leftNum, rightNum) * (i - index)
-                currentMaxSum = Math.max(currentMaxSum, newMaxSum)
+                val rightNum = height[i]
+                val newMaxSum = leftNum.coerceAtMost(rightNum) * (i - index)
+                currentMaxSum = currentMaxSum.coerceAtLeast(newMaxSum)
             }
         }
         return currentMaxSum
